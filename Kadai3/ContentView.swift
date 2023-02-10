@@ -21,12 +21,7 @@ struct ContentView: View {
             HStack {
                 // １つ目の計算機
                 VStack {
-                    TextField("", text: $number1)
-                        .font(.title)
-                        .frame(width: 100)
-                        .keyboardType(.numberPad)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-
+                    CustomTextField(text: $number1)
                     HStack{
                         Text("＋")
                         Toggle(isOn: $isEquation1) {
@@ -37,12 +32,7 @@ struct ContentView: View {
                 }
                 // ２つ目の計算機
                 VStack {
-                    TextField("", text: $number2)
-                        .font(.title)
-                        .frame(width: 100)
-                        .keyboardType(.numberPad)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-
+                    CustomTextField(text: $number2)
                     HStack{
                         Text("＋")
                         Toggle(isOn: $isEquation2) {
@@ -85,6 +75,18 @@ struct ContentView: View {
         }
     }
 }
+
+struct CustomTextField: View {
+    @Binding var text: String
+    var body: some View {
+            TextField("", text: $text)
+                .font(.title)
+                .frame(width: 100)
+                .keyboardType(.numberPad)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
