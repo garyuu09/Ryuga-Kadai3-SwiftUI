@@ -73,17 +73,16 @@ struct ContentView: View {
                 .font(.title)
         }
     }
-}
-
-func calResult(isEquation: Bool, number: String) -> Double {
-    let num = Double(number) ?? 0
-    if isEquation {
-        // 数値の符号を反転し、値を返す
-        return num * -1
-    }
-    else {
-        // 数値の符号をそのままで値を返す
-        return num
+    private func calResult(isEquation: Bool, number: String) -> Double {
+        let num = Double(number) ?? 0
+        if isEquation {
+            // 数値の符号を反転し、値を返す
+            return num * -1
+        }
+        else {
+            // 数値の符号をそのままで値を返す
+            return num
+        }
     }
 }
 
