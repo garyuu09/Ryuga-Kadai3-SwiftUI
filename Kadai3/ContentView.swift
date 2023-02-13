@@ -19,28 +19,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
-                // １つ目の計算機
-                VStack {
-                    CustomTextField(text: $number1)
-                    HStack{
-                        Text("＋")
-                        Toggle(isOn: $isEquation1) {
-                        }
-                        .fixedSize()
-                        Text("ー")
-                    }
-                }
-                // ２つ目の計算機
-                VStack {
-                    CustomTextField(text: $number2)
-                    HStack{
-                        Text("＋")
-                        Toggle(isOn: $isEquation2) {
-                        }
-                        .fixedSize()
-                        Text("ー")
-                    }
-                }
+                InputView(number: $number1, isEquation: $isEquation1)
+                InputView(number: $number2, isEquation: $isEquation2)
             }
             Button(action: {
                 result1 = calResult(isEquation: isEquation1, number: number1)
@@ -72,6 +52,24 @@ struct ContentView: View {
         else {
             // 数値の符号をそのままで値を返す
             return num
+        }
+    }
+}
+
+struct InputView: View {
+    @Binding var number: String
+    @Binding var isEquation: Bool
+
+    var body: some View {
+        VStack {
+            CustomTextField(text: $number)
+            HStack{
+                Text("＋")
+                Toggle(isOn: $isEquation) {
+                }
+                .fixedSize()
+                Text("ー")
+            }
         }
     }
 }
